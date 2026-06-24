@@ -1,0 +1,24 @@
+[project]
+name = "windrush_story_keeper"
+version = "0.1.0"
+description = "windrush_story_keeper using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai==1.9.3",
+]
+
+[project.scripts]
+windrush_story_keeper = "windrush_story_keeper.main:run"
+run_crew = "windrush_story_keeper.main:run"
+train = "windrush_story_keeper.main:train"
+replay = "windrush_story_keeper.main:replay"
+test = "windrush_story_keeper.main:test"
+run_with_trigger = "windrush_story_keeper.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

@@ -1,0 +1,38 @@
+extract_life_events_task:
+  description: >
+    Read the following Windrush oral history interview transcript:
+
+    {transcript}
+
+    Extract the important life events and milestones from the interview.
+    Focus only on information that appears in the transcript. Do not invent details.
+  expected_output: >
+    A chronological bullet point list of key life events, including dates or time periods where mentioned.
+    Include migration, work, housing, family, education, community involvement, and major turning points.
+  agent: life_events_agent
+
+identify_themes_task:
+  description: >
+    Review the Windrush oral history transcript and the life events extracted by the previous agent.
+
+    Identify the main themes in the story and suggest thoughtful follow-up questions that could help
+    preserve a richer family or community history.
+
+    Transcript:
+
+    {transcript}
+  expected_output: >
+    A markdown response with two sections: Key Themes and Follow-up Questions.
+    Include brief evidence from the transcript. Suggest 5 to 8 thoughtful follow-up questions.
+    Do not invent facts.
+  agent: themes_agent
+
+follow_up_questions_task:
+  description: >
+    Using the transcript and prior outputs {life_events} and {themes}, generate 5-8 conversational
+    follow-up questions grouped by Migration, Work, Housing, Family, and Community. Include a
+    one-line rationale referencing the transcript for each question and flag sensitive items.
+  expected_output: >
+    Markdown with sections for each theme and numbered questions. Each question should include
+    a short rationale and a `Sensitive: yes/no` flag with an optional gentle rephrase.
+  agent: follow_up_questions_agent
